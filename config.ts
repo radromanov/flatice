@@ -1,11 +1,10 @@
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
-import Env from "./env";
+import env from "./env";
 
 const ExpressConfig = () => {
-  const env = new Env();
-  const MORGAN = env.getOne("MORGAN");
+  const MORGAN = env.init().getOne("MORGAN");
 
   const app = express();
 

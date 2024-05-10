@@ -8,31 +8,22 @@ const EnvSchema = z.object({
 
 type TEnv = z.infer<typeof EnvSchema>;
 
-export default class Env {
-  private config: TEnv;
-  private schema: z.ZodSchema;
-
-  constructor() {
+const env = {
+  init: (schema = EnvSchema) => {
     dotenv.config({
       path: process.env.NODE_ENV ? "./.env.production" : "./.env.local",
     });
 
-    this.schema = EnvSchema;
-    this.config = this.init();
-  }
-
-  get() {
-    return this.config;
-  }
-
-  getOne<T extends keyof TEnv>(key: T) {
-    return this.config[key];
-  }
-
-  private init() {
-    return this.schema.parse({
+    const config = schema.parse({
       SERVER_PORT: Number(process.env.SERVER_PORT),
       MORGAN: process.env.MORGAN,
     });
-  }
-}
+
+    const get = () => config;
+    const getOne = <T extends keyof TEnv>(key: T) => config[key];
+
+    return { get, getOne };
+  },
+};
+
+export default env;

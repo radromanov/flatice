@@ -1,9 +1,11 @@
+import router from "./api/routes";
 import ExpressConfig from "./config";
-import Env from "./env";
+import env from "./env";
 
-const env = new Env();
-const PORT = env.getOne("SERVER_PORT");
+const PORT = env.init().getOne("SERVER_PORT");
 
 const app = ExpressConfig();
+
+app.use("/api", router);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
