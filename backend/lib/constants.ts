@@ -1,3 +1,3 @@
 export const PREFIX = {
-  EXPENSE: "/expense",
+  EXPENSE: "/expenses",
 } as const;

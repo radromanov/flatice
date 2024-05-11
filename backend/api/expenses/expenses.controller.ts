@@ -5,7 +5,7 @@ const controller = {
   handleGetOne: (req: Request, res: Response) => {
     const result = expenseService.getOne(req.originalUrl);
 
-    res.json({ result });
+    res.send({ result });
   },
 };
 
