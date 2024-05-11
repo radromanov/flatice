@@ -8,7 +8,7 @@ const EnvSchema = z.object({
 
 type TEnv = z.infer<typeof EnvSchema>;
 
-const env = {
+export const env = {
   init: (schema = EnvSchema) => {
     dotenv.config({
       path: process.env.NODE_ENV ? "./.env.production" : "./.env.local",
@@ -25,5 +25,3 @@ const env = {
     return { get, getOne };
   },
 };
-
-export default env;

@@ -1,12 +1,12 @@
 {
   "name": "flatice",
   "version": "0.0.1",
-  "main": "index.ts",
+  "main": "backend/index.ts",
   "repository": "https://github.com/radromanov/flatice",
   "author": "Radostin Romanov <rad.romanov@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon index.ts",
+    "dev": "nodemon backend/index.ts",
     "build": "tsc"
   },
   "dependencies": {

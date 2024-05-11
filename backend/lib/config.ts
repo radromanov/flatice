@@ -1,9 +1,9 @@
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
-import env from "./env";
+import { env } from ".";
 
-const ExpressConfig = () => {
+export const ExpressConfig = () => {
   const MORGAN = env.init().getOne("MORGAN");
 
   const app = express();
@@ -13,5 +13,3 @@ const ExpressConfig = () => {
 
   return app;
 };
-
-export default ExpressConfig;
