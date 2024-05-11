@@ -1,10 +1,9 @@
 import { Router } from "express";
-import expenseRoutes from "./expenses/expense.route";
+import expensesRoutes from "./expenses/expenses.route";
+import { PREFIX } from "../constants";
 
 const router = Router();
 
-const expensesApi = expenseRoutes.init().routes();
-
-router.use(expensesApi.prefix, expensesApi.router);
+router.use(PREFIX.EXPENSE, expensesRoutes);
 
 export default router;
