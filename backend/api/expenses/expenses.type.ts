@@ -2,22 +2,22 @@ import { CATEGORIES } from "../../lib";
 
 type Emergency = {
   id: string;
-  category: "emergency";
+  category: typeof CATEGORY.EMERGENCY;
 };
 
 type Goals = {
   id: string;
-  category: "goal";
+  category: typeof CATEGORY.GOAL;
 };
 
 type Bills = {
   id: string;
-  category: "bill";
+  category: typeof CATEGORY.BILL;
 };
 
 type Spending = {
   id: string;
-  category: "spending";
+  category: typeof CATEGORY.SPENDING;
   // need: boolean;
   // love: boolean;
   // like: boolean;

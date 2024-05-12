@@ -41,8 +41,23 @@ const SPENDING_CATEGORY = [
   "Other",
 ] as const;
 
-export const CATEGORIES = {
-  emergency: ["Emergency"],
+const EMERGENCY_CATEGORY = ["Emergency"] as const;
+
+export const CATEGORY = {
+  EMERGENCY: "emergency",
+  GOAL: "goal",
+  BILL: "bill",
+  SPENDING: "spending",
+} as const;
+
+export const CATEGORIES: {
+  [K in (typeof CATEGORY)[keyof typeof CATEGORY]]:
+    | typeof EMERGENCY_CATEGORY
+    | typeof GOAL_CATEGORY
+    | typeof BILL_CATEGORY
+    | typeof SPENDING_CATEGORY;
+} = {
+  emergency: EMERGENCY_CATEGORY,
   goal: GOAL_CATEGORY,
   bill: BILL_CATEGORY,
   spending: SPENDING_CATEGORY,
