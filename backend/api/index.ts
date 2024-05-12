@@ -4,6 +4,6 @@ import { PREFIX } from "../lib/constants";
 
 const router = Router();
 
-router.use(PREFIX.EXPENSE, expensesRoutes);
+router.use(PREFIX.EXPENSES, expensesRoutes);
 
 export default router;

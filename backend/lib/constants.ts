@@ -1,5 +1,5 @@
 export const PREFIX = {
-  EXPENSE: "/expenses",
+  EXPENSES: "/expenses",
 } as const;
 
 export type ID_LEN = 12 | 14 | 16;

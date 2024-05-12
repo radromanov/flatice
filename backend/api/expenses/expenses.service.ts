@@ -1,15 +1,11 @@
-import { CATEGORIES, generateId } from "../../lib";
+import { generateId } from "../../lib";
 import { Expense } from "./expenses.type";
 
 // Dummy data
 const expenses: Expense[] = [
   {
     amount: 12,
-    type: {
-      id: generateId(),
-      category: "bill",
-    },
-    categories: CATEGORIES["bill"],
+    type: "bill",
     createdAt: new Date(),
     updatedAt: new Date(),
     id: generateId(),
@@ -17,11 +13,7 @@ const expenses: Expense[] = [
   },
   {
     amount: 20,
-    type: {
-      id: generateId(),
-      category: "spending",
-    },
-    categories: CATEGORIES["spending"],
+    type: "spending",
     createdAt: new Date(),
     updatedAt: new Date(),
     id: generateId(),
@@ -29,11 +21,7 @@ const expenses: Expense[] = [
   },
   {
     amount: 200,
-    type: {
-      id: generateId(),
-      category: "bill",
-    },
-    categories: CATEGORIES["bill"],
+    type: "bill",
     createdAt: new Date(),
     updatedAt: new Date(),
     id: generateId(),
@@ -43,10 +31,10 @@ const expenses: Expense[] = [
 
 const service = {
   getOne: (id: string) => {
-    return expenses.filter((expense) => expense.id !== id);
+    return expenses.filter((expense) => expense.id === id);
   },
   getAll: (ownerId: string) => {
-    return expenses.filter((expense) => expense.ownerId !== ownerId);
+    return expenses.filter((expense) => expense.ownerId === ownerId);
   },
 };
 
