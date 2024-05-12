@@ -1,27 +1,20 @@
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-
 function App() {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>FLATICE</h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <header>
+        <nav className="flex font-medium h-10 items-center justify-between border-b border-b-white/30">
+          <div>
+            <span>Logo</span>
+          </div>
+
+          <div className="flex gap-2">
+            <span>Home</span>
+            <span>Expenses</span>
+          </div>
+        </nav>
+      </header>
+      <main></main>
+      <footer></footer>
     </>
   );
 }
