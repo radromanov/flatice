@@ -15,6 +15,7 @@ export default defineConfig({
           process.env.NODE_ENV === "production"
             ? "production domain"
             : "http://localhost:3000",
+        changeOrigin: true,
       },
     },
   },

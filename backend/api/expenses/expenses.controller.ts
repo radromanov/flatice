@@ -2,8 +2,13 @@ import { Request, Response } from "express";
 import expenseService from "./expenses.service";
 
 const controller = {
-  handleGetOne: (req: Request, res: Response) => {
-    const result = expenseService.getOne(req.originalUrl);
+  handleGetOne: (
+    req: Request<any, any, any, { id: string }>,
+    res: Response
+  ) => {
+    const { id } = req.query;
+
+    const result = expenseService.getOne(id);
 
     res.send({ result });
   },
