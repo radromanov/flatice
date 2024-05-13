@@ -6,7 +6,7 @@ function App() {
 
   useEffect(() => {
     async function fetchExpenses() {
-      const response = await fetch(`/api/expenses?owner=${ownerId}`);
+      const response = await fetch(`/api/v1/expenses?owner=${ownerId}`);
       const data = await response.json();
 
       setExpenses(data.expenses);

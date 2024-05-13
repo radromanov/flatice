@@ -1,7 +1,7 @@
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
-import { env } from "../lib/env";
+import { env } from "../../lib/env";
 
 export const ExpressConfig = () => {
   const MORGAN = env.init().getOne("MORGAN");
@@ -10,6 +10,9 @@ export const ExpressConfig = () => {
 
   app.use(morgan(MORGAN));
   app.use(helmet());
+
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
 
   return app;
 };

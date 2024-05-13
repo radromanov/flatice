@@ -6,7 +6,7 @@ export const PREFIX = {
 export type ID_LEN = 12 | 14 | 16;
 export const ID_LEN: ID_LEN = 16 as const;
 export const ID_CHARS =
-  "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789~-_<>\\^" as const;
+  "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789~-_" as const;
 
 // You save for... until you can spend for...
 const GOAL_CATEGORY = [
