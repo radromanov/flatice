@@ -1,5 +1,5 @@
 import { generateId } from "../../lib";
-import { Expense } from "./expenses.type";
+import { Expense, ExpenseInsertSchema } from "./expenses.type";
 
 // Dummy data
 const expenses: Expense[] = [
@@ -35,6 +35,19 @@ const service = {
   },
   getAll: (ownerId: string) => {
     return expenses.filter((expense) => expense.ownerId === ownerId);
+  },
+
+  createOne: (payload: ExpenseInsertSchema) => {
+    const expense = {
+      ...payload,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      id: generateId(),
+    };
+
+    expenses.push(expense);
+
+    return expense;
   },
 };
 
