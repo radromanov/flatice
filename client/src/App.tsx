@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { api } from "../../lib/helpers";
 import { ExpenseSelectSchema } from "../../lib/types";
+import { api } from "../../lib/api";
 
 function App() {
   const ownerId = "admin";
