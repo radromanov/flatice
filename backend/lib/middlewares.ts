@@ -19,10 +19,6 @@ export const bodyOfType =
     next();
   };
 
-export const notFound = (req: Request, _res: Response, next: NextFunction) => {
-  next(new Exception(`Path ${req.originalUrl} not found.`, "Not Found"));
-};
-
 export const handleError = (
   error: Error,
   _req: Request,

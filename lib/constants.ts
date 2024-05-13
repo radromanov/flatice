@@ -1,6 +1,7 @@
 export const PREFIX = {
-  EXPENSES: "/expenses",
-  CATEGORIES: "/categories",
+  core: "/api/v1",
+  expenses: "/expenses",
+  categories: "/categories",
 } as const;
 
 export type ID_LEN = 12 | 14 | 16;

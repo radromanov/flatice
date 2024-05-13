@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
+import { api } from "../../lib/helpers";
+import { ExpenseSelectSchema } from "../../lib/types";
 
 function App() {
   const ownerId = "admin";
-  const [expenses, setExpenses] = useState([]);
+  const [expenses, setExpenses] = useState<ExpenseSelectSchema>([]);
 
   useEffect(() => {
     async function fetchExpenses() {
-      const response = await fetch(`/api/v1/expenses?owner=${ownerId}`);
-      const data = await response.json();
-
-      setExpenses(data.expenses);
+      const data = await api.expenses.getAll(ownerId);
+      setExpenses(data);
     }
 
     fetchExpenses();

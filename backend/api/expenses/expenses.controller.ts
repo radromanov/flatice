@@ -21,7 +21,7 @@ const controller = {
 
     const expenses = expenseService.getAll(owner);
 
-    res.send({ expenses });
+    res.send(expenses);
   },
 
   handleCreateOne: (req: Request, res: Response) => {

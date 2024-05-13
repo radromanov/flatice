@@ -5,7 +5,7 @@ import { PREFIX } from "../../lib";
 
 const router = Router();
 
-router.use(PREFIX.EXPENSES, expensesRouter);
-router.use(PREFIX.CATEGORIES, categoriesRouter);
+router.use(PREFIX.expenses, expensesRouter);
+router.use(PREFIX.categories, categoriesRouter);
 
 export default router;

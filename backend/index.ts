@@ -1,4 +1,3 @@
-import express from "express";
 import { env } from "../lib/env";
 import router from "./api";
 import { handleError } from "./lib";
