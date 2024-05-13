@@ -1,5 +1,5 @@
-import { generateId } from "../../lib";
-import { Expense, ExpenseInsertSchema } from "./expenses.type";
+import { generateId } from "../../../lib/helpers";
+import { Expense, ExpenseInsertSchema } from "../../../lib/types";
 
 // Dummy data
 const expenses: Expense[] = [

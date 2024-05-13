@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { PREFIX } from "../lib/constants";
-import expensesRouter from "./expenses/expenses.route";
+import expensesRouter from "./expenses/expenses.module";
 import categoriesRouter from "./categories/categories.route";
+import { PREFIX } from "../../lib";
 
 const router = Router();
 

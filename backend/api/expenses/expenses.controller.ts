@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import expenseService from "./expenses.service";
-import { ExpenseInsertSchema } from "./expenses.type";
+import { ExpenseInsertSchema } from "../../../lib/types";
 
 const controller = {
   handleGetOne: (req: Request, res: Response) => {

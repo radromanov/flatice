@@ -1,5 +1,6 @@
+import { env } from "../lib/env";
 import router from "./api";
-import { ExpressConfig, env } from "./lib";
+import { ExpressConfig } from "./config";
 
 const PORT = env.init().getOne("SERVER_PORT");
 
