@@ -1,6 +1,12 @@
 import z from "zod";
-import { PREFIX } from ".";
+import { PREFIX, query } from ".";
 import { ExpenseInsert, ExpenseSelect } from "./types";
+
+// Define API endpoints
+const { ALL_EXPENSES, TOTAL_EXPENSES } = {
+  TOTAL_EXPENSES: `${PREFIX.core}${PREFIX.expenses}/total`,
+  ALL_EXPENSES: `${PREFIX.core}${PREFIX.expenses}`,
+} as const;
 
 export const api = {
   categories: {
@@ -11,45 +17,20 @@ export const api = {
     getTotalSpent: async (ownerId: string, filter?: string | string[]) => {
       filter = filter?.toString();
 
-      const response = await fetch(
-        `${PREFIX.core}/${PREFIX.expenses}/total?owner=${ownerId}${
-          filter ? `&filter=${filter}` : ""
-        }`
+      return await query<number>(
+        `${TOTAL_EXPENSES}?owner=${ownerId}${filter ? `&filter=${filter}` : ""}`
       );
-
-      const data = await response.json();
-
-      return data;
     },
-    getAll: async (ownerId: string) => {
-      const response = await fetch(
-        `${PREFIX.core}/${PREFIX.expenses}?owner=${ownerId}`
-      );
-
-      const data = await response.json();
-
-      const parsedData = z.array(ExpenseSelect).safeParse(data);
-      if (!parsedData.success) {
-        console.log(parsedData.error);
-        return [];
-      }
-
-      return parsedData.data;
-    },
-    createOne: async (payload: ExpenseInsert) => {
-      const response = await fetch(`${PREFIX.core}/${PREFIX.expenses}`, {
+    getAll: async (ownerId: string) =>
+      await query(`${ALL_EXPENSES}?owner=${ownerId}`, {
+        schema: z.array(ExpenseSelect),
+      }),
+    createOne: async (payload: ExpenseInsert) =>
+      await query(`${ALL_EXPENSES}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-      });
-
-      const parsedResponse = ExpenseInsert.safeParse(await response.json());
-      if (!parsedResponse.success) {
-        return null;
-      }
-
-      return parsedResponse.data;
-    },
+        schema: ExpenseInsert,
+      }),
   },
 };
 

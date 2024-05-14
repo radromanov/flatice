@@ -18,20 +18,22 @@ function Expenses() {
     queryFn: getExpenses,
   });
 
-  console.log(data);
-
   if (isPending) return "Loading...";
   if (error) return null;
 
   return (
     <div>
       <ul>
-        {data.map((expense) => (
-          <li key={expense.id}>
-            <span>{expense.type}</span>
-            <span>{expense.amount}</span>
-          </li>
-        ))}
+        {data?.length ? (
+          data.map((expense) => (
+            <li key={expense.id}>
+              <span>{expense.type}</span>
+              <span>{expense.amount}</span>
+            </li>
+          ))
+        ) : (
+          <></>
+        )}
       </ul>
       <TotalSpent />
     </div>

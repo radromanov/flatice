@@ -12,8 +12,6 @@ const TotalSpent = () => {
     queryFn: getTotalSpent,
   });
 
-  console.log(data);
-
   if (isPending) return "Loading...";
   if (error) return null;
 

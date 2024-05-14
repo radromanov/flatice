@@ -2,6 +2,7 @@ import z from "zod";
 import { CATEGORIES } from ".";
 
 //
+type HTTPMethod = "GET" | "POST" | "PUT" | "DELETE";
 
 const id = z.string().min(1);
 const type = z.enum(["spending", "bill", "goal", "emergency"]);
@@ -12,6 +13,13 @@ const updatedAt = z.string();
 type ExpenseType = z.infer<typeof type>;
 
 //
+
+export type QueryOpts<T> = {
+  method?: HTTPMethod;
+  body?: unknown;
+  schema?: z.ZodType<T>;
+  headers?: any;
+};
 
 export const ExpenseInsert = z.object({
   type,
