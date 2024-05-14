@@ -30,6 +30,14 @@ const expenses: Expense[] = [
 ];
 
 const service = {
+  getTotalSpent: (ownerId: string) => {
+    let total = 0;
+    const expenses = service
+      .getAll(ownerId)
+      .forEach((expense) => (total += expense.amount));
+
+    return total;
+  },
   getOne: (id: string) => {
     return expenses.filter((expense) => expense.id === id);
   },

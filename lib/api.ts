@@ -15,12 +15,7 @@ export const api = {
 
       const data = await response.json();
 
-      const parsedData = ExpenseSelect.safeParse(data);
-      if (!parsedData.success) {
-        return [];
-      }
-
-      return parsedData.data;
+      return data;
     },
     getAll: async (ownerId: string) => {
       const response = await fetch(

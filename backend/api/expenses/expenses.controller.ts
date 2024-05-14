@@ -2,6 +2,16 @@ import { Request, Response } from "express";
 import expenseService from "./expenses.service";
 
 const controller = {
+  handleGetTotalSpent: (
+    req: Request<any, any, any, { owner: string }>,
+    res: Response
+  ) => {
+    const { owner } = req.query;
+
+    const totalSpent = expenseService.getTotalSpent(owner);
+
+    res.send(totalSpent.toString());
+  },
   handleGetOne: (
     req: Request<any, any, any, { id: string }>,
     res: Response
