@@ -1,5 +1,6 @@
+import z from "zod";
 import { PREFIX } from ".";
-import { ExpenseInsertSchema, ExpenseSelectSchema } from "./types";
+import { ExpenseInsert, ExpenseSelect } from "./types";
 
 export const api = {
   categories: {
@@ -7,6 +8,20 @@ export const api = {
   },
 
   expenses: {
+    getTotalSpent: async (ownerId: string) => {
+      const response = await fetch(
+        `${PREFIX.core}/${PREFIX.expenses}/total-spent?owner=${ownerId}`
+      );
+
+      const data = await response.json();
+
+      const parsedData = ExpenseSelect.safeParse(data);
+      if (!parsedData.success) {
+        return [];
+      }
+
+      return parsedData.data;
+    },
     getAll: async (ownerId: string) => {
       const response = await fetch(
         `${PREFIX.core}/${PREFIX.expenses}?owner=${ownerId}`
@@ -14,23 +29,22 @@ export const api = {
 
       const data = await response.json();
 
-      const parsedData = ExpenseSelectSchema.safeParse(data);
+      const parsedData = z.array(ExpenseSelect).safeParse(data);
       if (!parsedData.success) {
+        console.log(parsedData.error);
         return [];
       }
 
       return parsedData.data;
     },
-    createOne: async (payload: ExpenseInsertSchema) => {
+    createOne: async (payload: ExpenseInsert) => {
       const response = await fetch(`${PREFIX.core}/${PREFIX.expenses}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      const parsedResponse = ExpenseInsertSchema.safeParse(
-        await response.json()
-      );
+      const parsedResponse = ExpenseInsert.safeParse(await response.json());
       if (!parsedResponse.success) {
         return null;
       }

@@ -1,6 +1,4 @@
-import z from "zod";
-import { ID_CHARS, ID_LEN, PREFIX } from ".";
-import { ExpenseInsertSchema, ExpenseSelectSchema } from "./types";
+import { ID_CHARS, ID_LEN } from ".";
 
 export function generateId(
   charSet: string = ID_CHARS,

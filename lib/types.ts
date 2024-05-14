@@ -1,34 +1,36 @@
 import z from "zod";
-import { CATEGORIES, PREFIX } from ".";
+import { CATEGORIES } from ".";
 
-export type Prefix = (typeof PREFIX)[keyof typeof PREFIX];
+//
 
-export type ExpenseType = "spending" | "bill" | "goal" | "emergency";
-export type Expense = {
-  id: string;
-  createdAt: Date;
-  updatedAt: Date;
-  type: ExpenseType;
-  amount: number;
-  ownerId: string;
-};
-export const ExpenseInsertSchema = z.object({
-  type: z.enum(["spending", "bill", "goal", "emergency"]),
-  amount: z.number().positive(),
-  ownerId: z.string().min(1),
+const id = z.string().min(1);
+const type = z.enum(["spending", "bill", "goal", "emergency"]);
+const amount = z.number().positive();
+const ownerId = z.string().min(1);
+const createdAt = z.string();
+const updatedAt = z.string();
+type ExpenseType = z.infer<typeof type>;
+
+//
+
+export const ExpenseInsert = z.object({
+  type,
+  amount,
+  ownerId,
 });
-export const ExpenseSelectSchema = z.array(
-  z.object({
-    id: z.string().min(1),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-    type: z.enum(["spending", "bill", "goal", "emergency"]),
-    amount: z.number().positive(),
-    ownerId: z.string().min(1),
-  })
-);
-export type ExpenseInsertSchema = z.infer<typeof ExpenseInsertSchema>;
-export type ExpenseSelectSchema = z.infer<typeof ExpenseSelectSchema>;
+
+export type Expense = z.infer<typeof ExpenseSelect>;
+export const ExpenseSelect = z.object({
+  id,
+  createdAt,
+  updatedAt,
+  type,
+  amount,
+  ownerId,
+});
+
+export type ExpenseInsert = z.infer<typeof ExpenseInsert>;
+export type ExpenseSelect = z.infer<typeof ExpenseSelect>;
 
 export type Category = {
   id: string;
