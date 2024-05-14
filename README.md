@@ -1,8 +1,8 @@
 ## Todo
 
 - [x] Deploy (Vercel)
-- [ ] Database (Vercel Postgres)
-  - [ ] ORM (Drizzle)
+- [x] Database (Vercel Postgres)
+  - [x] ORM (Drizzle)
 - [ ] Authentication (Kinde)
 - [ ] Error management (Sentry)
 - [ ] Expenses CRUD operations
