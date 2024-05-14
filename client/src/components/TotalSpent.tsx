@@ -8,7 +8,7 @@ async function getTotalSpent() {
 
 const TotalSpent = () => {
   const { isPending, error, data } = useQuery({
-    queryKey: ["get-total-spent"],
+    queryKey: ["get-total"],
     queryFn: getTotalSpent,
   });
 

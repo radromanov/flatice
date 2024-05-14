@@ -3,7 +3,7 @@ import expenseService from "./expenses.service";
 
 const controller = {
   handleGetTotalSpent: (
-    req: Request<any, any, any, { owner: string }>,
+    req: Request<any, any, any, { owner: string; filter?: string }>,
     res: Response
   ) => {
     const { owner } = req.query;

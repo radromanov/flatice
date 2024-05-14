@@ -8,9 +8,13 @@ export const api = {
   },
 
   expenses: {
-    getTotalSpent: async (ownerId: string) => {
+    getTotalSpent: async (ownerId: string, filter?: string | string[]) => {
+      filter = filter?.toString();
+
       const response = await fetch(
-        `${PREFIX.core}/${PREFIX.expenses}/total-spent?owner=${ownerId}`
+        `${PREFIX.core}/${PREFIX.expenses}/total?owner=${ownerId}${
+          filter ? `&filter=${filter}` : ""
+        }`
       );
 
       const data = await response.json();
