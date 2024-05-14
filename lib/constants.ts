@@ -1,7 +1,7 @@
 export const PREFIX = {
-  core: "/api/v1",
   expenses: "/expenses",
   categories: "/categories",
+  auth: "/auth",
 } as const;
 
 export type ID_LEN = 12 | 14 | 16;

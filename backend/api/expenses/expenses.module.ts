@@ -7,7 +7,8 @@ const expensesRouter = Router();
 
 expensesRouter
   .get("/", expensesController.handleGetAll)
-  .post("/", bodyOfType(ExpenseInsert), expensesController.handleCreateOne)
-  .get("/total", expensesController.handleGetTotalSpent);
+  .get("/:id", expensesController.handleGetOne)
+  .get("/total", expensesController.handleGetTotalSpent)
+  .post("/", bodyOfType(ExpenseInsert), expensesController.handleCreateOne);
 
 export default expensesRouter;

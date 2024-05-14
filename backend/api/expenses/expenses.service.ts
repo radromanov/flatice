@@ -29,23 +29,23 @@ const expenses: Expense[] = [
   },
 ];
 
-const service = {
-  getTotalSpent: (ownerId: string) => {
+const expenseService = {
+  getTotalSpent: async (ownerId: string, filter?: string | string[]) => {
     let total = 0;
-    const expenses = service
-      .getAll(ownerId)
-      .forEach((expense) => (total += expense.amount));
+    const expenses = (await expenseService.getAll(ownerId)).forEach(
+      (expense) => (total += expense.amount)
+    );
 
     return total;
   },
-  getOne: (id: string) => {
-    return expenses.filter((expense) => expense.id === id);
+  getOne: async (id: string) => {
+    return expenses.filter((expense) => expense.id === id)[0] ?? null;
   },
-  getAll: (ownerId: string) => {
+  getAll: async (ownerId: string) => {
     return expenses.filter((expense) => expense.ownerId === ownerId);
   },
 
-  createOne: (payload: ExpenseInsert) => {
+  createOne: async (payload: ExpenseInsert) => {
     const expense = {
       ...payload,
       createdAt: new Date().toString(),
@@ -59,4 +59,5 @@ const service = {
   },
 };
 
-export default service;
+export type ExpenseService = typeof expenseService;
+export default expenseService;

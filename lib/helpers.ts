@@ -45,10 +45,7 @@ export async function query<T>(url: string): Promise<T>;
  *             - `schema` Optional Zod schema for validating the response data.
  * @returns A promise that resolves to the response data, or null if schema validation fails.
  */
-export async function query<T>(
-  url: string,
-  opts: QueryOpts<T>
-): Promise<T | null>;
+export async function query<T>(url: string, opts: QueryOpts<T>): Promise<T>;
 
 /**
  * Implementation of the query function.
@@ -56,10 +53,7 @@ export async function query<T>(
  * @param opts Additional options for customizing the request.
  * @returns A promise that resolves to the response data, or null if schema validation fails.
  */
-export async function query<T>(
-  url: string,
-  opts?: QueryOpts<T>
-): Promise<T | null> {
+export async function query<T>(url: string, opts?: QueryOpts<T>): Promise<T> {
   opts = opts || {};
 
   const response = await fetch(url, {
@@ -70,14 +64,6 @@ export async function query<T>(
       : { "Content-Type": "application/json" },
   });
   const data = (await response.json()) as T;
-
-  if (opts.schema) {
-    const parsed = opts.schema.safeParse(data);
-
-    if (!parsed.success) return null;
-
-    return parsed.data;
-  }
 
   return data;
 }

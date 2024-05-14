@@ -13,14 +13,14 @@ const controller = {
     res.send(totalSpent.toString());
   },
   handleGetOne: (
-    req: Request<any, any, any, { id: string }>,
+    req: Request<{ id: string }, any, any, any>,
     res: Response
   ) => {
-    const { id } = req.query;
+    const { id } = req.params;
 
-    const result = expenseService.getOne(id);
+    const expense = expenseService.getOne(id);
 
-    res.send({ result });
+    res.send(expense);
   },
 
   handleGetAll: (
@@ -35,9 +35,9 @@ const controller = {
   },
 
   handleCreateOne: (req: Request, res: Response) => {
-    const insertedExpense = expenseService.createOne(req.body);
+    const expense = expenseService.createOne(req.body);
 
-    res.send({ expense: insertedExpense });
+    res.send(expense);
   },
 };
 
