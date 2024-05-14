@@ -11,6 +11,7 @@
     "db:studio": "yarn drizzle-kit studio"
   },
   "dependencies": {
+    "@kinde-oss/kinde-auth-nextjs": "^2.2.6",
     "@next/env": "^14.2.3",
     "@vercel/postgres": "^0.8.0",
     "drizzle-orm": "^0.30.10",

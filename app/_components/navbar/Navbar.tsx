@@ -1,7 +1,16 @@
 import React from "react";
 import NavbarGroup from "./NavbarGroup";
+import {
+  LoginLink,
+  RegisterLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
 
-const navigationItems = ["Home", "About", "Log in", "Sign up"];
+const navigationItems = [
+  "Home",
+  "About",
+  <LoginLink key={"login-link"}>Log in</LoginLink>,
+  <RegisterLink key={"register-link"}>Sign up</RegisterLink>,
+];
 const logoItem = ["Logo"];
 
 const Navbar = () => {
