@@ -1,25 +1,24 @@
 import React from "react";
 import NavbarGroup from "./NavbarGroup";
-import {
-  LoginLink,
-  RegisterLink,
-} from "@kinde-oss/kinde-auth-nextjs/components";
+import NavbarItem from "./NavbarItem";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import Authed from "./Authed";
+import Unauthed from "./Unauthed";
 
-const navigationItems = [
-  "Home",
-  "About",
-  <LoginLink key={"login-link"}>Log in</LoginLink>,
-  <RegisterLink key={"register-link"}>Sign up</RegisterLink>,
-];
-const logoItem = ["Logo"];
+const Navbar = async () => {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
 
-const Navbar = () => {
   return (
     <header className="flex flex-shrink">
       <nav className="w-full flex">
-        <NavbarGroup items={logoItem} />
+        <NavbarItem item="Logo" />
         <div className="flex flex-grow" />
-        <NavbarGroup items={navigationItems} />
+        <NavbarGroup>
+          <NavbarItem item="Home" />
+          <NavbarItem item="About" />
+          {user ? <Authed user={user} /> : <Unauthed />}
+        </NavbarGroup>
       </nav>
     </header>
   );
