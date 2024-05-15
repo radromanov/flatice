@@ -1,11 +1,17 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Navbar from "./_components/navbar/Navbar";
-import Footer from "./_components/footer/Footer";
-import Main from "./_components/main/Main";
+import "../styles/globals.css";
+import { Metadata } from "next";
 
-const inter = Inter({ subsets: ["latin"] });
+import { Inter as FontSans } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+import Navbar from "@/components/main-nav";
+import Main from "@/components/main-content";
+import Footer from "@/components/main-footer";
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "Flatice",
@@ -19,7 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={cn(
+          "flex flex-col min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
+      >
         <Navbar />
         <Main>{children}</Main>
         <Footer />
