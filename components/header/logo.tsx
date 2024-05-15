@@ -1,10 +1,14 @@
 import Link from "next/link";
+import LogoIcon from "../icons/logo-icon";
 
 const Logo = () => {
   return (
-    <div className="flex items-center flex-shrink px-2">
-      <Link href={"/"}>Logo</Link>
-    </div>
+    <Link href={"/"} className="group flex items-center flex-shrink">
+      <div className="flex gap-1">
+        <LogoIcon />
+        <span>flatice</span>
+      </div>
+    </Link>
   );
 };
 

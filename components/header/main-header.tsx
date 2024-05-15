@@ -3,7 +3,7 @@ import Navigation from "./main-nav";
 
 const Header = () => {
   return (
-    <header className="flex flex-shrink border border-b-neutral-300 py-1">
+    <header className="flex flex-shrink container h-12 py-2">
       <Logo />
 
       <div className="flex flex-grow" />

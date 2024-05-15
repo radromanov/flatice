@@ -6,7 +6,7 @@ export default function Home() {
 
 const Landing = () => {
   return (
-    <div className="flex flex-col justify-center items-center w-full gap-2">
+    <div className="flex flex-col justify-center items-center w-full gap-2 container">
       <h1 className="text-4xl font-semibold">
         <span>Your expense tracking companion</span>
       </h1>
