@@ -1,7 +1,7 @@
 import React from "react";
 
-const NavbarItem = ({ item }: { item: string | React.ReactNode }) => {
-  return <span>{item}</span>;
+const NavbarItem = ({ children }: { children: React.ReactNode }) => {
+  return <span>{children}</span>;
 };
 
 export default NavbarItem;

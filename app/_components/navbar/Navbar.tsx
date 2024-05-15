@@ -1,9 +1,12 @@
 import React from "react";
 import NavbarGroup from "./NavbarGroup";
 import NavbarItem from "./NavbarItem";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import {
+  LoginLink,
+  RegisterLink,
+  getKindeServerSession,
+} from "@kinde-oss/kinde-auth-nextjs/server";
 import Authed from "./Authed";
-import Unauthed from "./Unauthed";
 
 const Navbar = async () => {
   const { getUser } = getKindeServerSession();
@@ -12,12 +15,23 @@ const Navbar = async () => {
   return (
     <header className="flex flex-shrink">
       <nav className="w-full flex">
-        <NavbarItem item="Logo" />
+        <NavbarItem>Logo</NavbarItem>
+
         <div className="flex flex-grow" />
+
         <NavbarGroup>
-          <NavbarItem item="Home" />
-          <NavbarItem item="About" />
-          {user ? <Authed user={user} /> : <Unauthed />}
+          <NavbarItem>Home</NavbarItem>
+          <NavbarItem>About</NavbarItem>
+          <NavbarItem>
+            {user ? (
+              <Authed user={user} />
+            ) : (
+              <>
+                <LoginLink>Sign in</LoginLink>
+                <RegisterLink>Sign up</RegisterLink>
+              </>
+            )}
+          </NavbarItem>
         </NavbarGroup>
       </nav>
     </header>
