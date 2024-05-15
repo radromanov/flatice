@@ -1,16 +1,17 @@
 "use client";
 
 import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
+import { Button } from "../ui/button";
 
 const Unauthorized = () => {
   return (
     <>
-      <span>
+      <Button size="sm">
         <LoginLink>Sign in</LoginLink>
-      </span>
-      <span>
+      </Button>
+      <Button size="sm" variant="outline">
         <RegisterLink>Sign up</RegisterLink>
-      </span>
+      </Button>
     </>
   );
 };

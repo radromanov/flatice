@@ -1,5 +1,5 @@
 import NavigationItems from "./nav-items";
-import Authorized from "./authorized";
+import UserDropdown from "./user-dropdown";
 import Unauthorized from "./unauthorized";
 
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
@@ -10,10 +10,15 @@ const Navigation = async () => {
 
   return (
     <nav className="flex flex-shrink">
-      <div className="flex items-center">
-        <NavigationItems />
-
-        {user ? <Authorized user={user} /> : <Unauthorized />}
+      <div className="flex items-center gap-2">
+        {user ? (
+          <>
+            <NavigationItems />
+            <UserDropdown user={user} />
+          </>
+        ) : (
+          <Unauthorized />
+        )}
       </div>
     </nav>
   );
