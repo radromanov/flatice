@@ -1,10 +1,10 @@
-import "../styles/globals.css";
+import "@/styles/globals.css";
 import { Metadata } from "next";
 
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-import Navbar from "@/components/main-nav";
+import Navbar from "@/components/nav/main-nav";
 import Main from "@/components/main-content";
 import Footer from "@/components/main-footer";
 
