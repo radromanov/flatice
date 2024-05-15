@@ -1,7 +1,6 @@
 import Link from "next/link";
 import ExpensesIcon from "../icons/expenses-icon";
 import HomeIcon from "../icons/home-icon";
-import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
 
 const items: { text: string; to: string; icon: React.ReactNode }[] = [
   { text: "Home", to: "/", icon: <HomeIcon /> },

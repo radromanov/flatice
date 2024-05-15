@@ -5,7 +5,7 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 
 import Header from "@/components/header/main-header";
-import Main from "@/components/main-content";
+import Main from "@/components/content/main-content";
 import Footer from "@/components/main-footer";
 
 const fontSans = FontSans({
