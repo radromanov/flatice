@@ -8,7 +8,7 @@ const ExpensesPage = async () => {
   return (
     <div className="container flex flex-grow">
       <Main>
-        {expenses && expenses.length ? (
+        {expenses ? (
           <ExpensesTable expenses={expenses} />
         ) : (
           "You have no expenses. Congratulations!"

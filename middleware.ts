@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 // const privateRoutes = ["/expenses"];
-const publicRoutes = ["/", "/sentry-example-page"];
+const publicRoutes = ["/"];
 
 export default async function middleware(req: NextRequest) {
   const isAuthed = await getKindeServerSession().isAuthenticated();
