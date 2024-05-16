@@ -5,6 +5,10 @@
   - [x] ORM (Drizzle)
 - [x] Authentication (Kinde)
 - [x] Shad UI
-- [ ] Error management (Sentry)
-- [ ] Expenses CRUD operations
+- [x] User profile page
+- [x] Protected routes
+- [x] Mock expenses
+- [x] Error management (Sentry)
 - [ ] Analytics (Posthog)
+- [ ] Plaid API?
+- [ ] Expenses CRUD operations (might not be necessary if Plaid works)
