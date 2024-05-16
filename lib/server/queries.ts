@@ -13,7 +13,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 export async function getMyExpenses() {
   const user = await getKindeServerSession().getUser();
 
-  if (!user) throw new Error("Unauthorized");
+  if (!user) return null;
 
   const expenses = await db
     .select({
