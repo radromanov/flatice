@@ -6,12 +6,14 @@ import { Button } from "../ui/button";
 const Unauthorized = () => {
   return (
     <>
-      <Button size="sm">
-        <LoginLink>Sign in</LoginLink>
-      </Button>
-      <Button size="sm" variant="outline">
-        <RegisterLink>Sign up</RegisterLink>
-      </Button>
+      <LoginLink>
+        <Button size="sm">Sign in</Button>
+      </LoginLink>
+      <RegisterLink>
+        <Button size="sm" variant="outline">
+          Sign up
+        </Button>
+      </RegisterLink>
     </>
   );
 };

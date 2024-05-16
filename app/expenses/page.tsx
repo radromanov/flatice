@@ -1,10 +1,14 @@
 import Main from "@/components/content/main-content";
-import React from "react";
+import { getMyExpenses } from "@/lib/server/queries";
 
-const ExpensesPage = () => {
+const ExpensesPage = async () => {
+  const expenses = await getMyExpenses();
+
   return (
     <div className="container flex flex-grow">
-      <Main>ExpensesPage</Main>
+      <Main>
+        {expenses.length ? "" : "You have no expenses. Congratulations!"}
+      </Main>
     </div>
   );
 };
