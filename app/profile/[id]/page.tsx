@@ -11,7 +11,31 @@ const UserProfilePage = async () => {
   return (
     <div className="pl-8">
       <Main>
-        <h3 className="text-2xl font-medium">Hello, {user.given_name}</h3>
+        <div className="flex flex-col">
+          <h3 className="text-2xl font-medium">Hello, {user.given_name}</h3>
+
+          <label htmlFor="name" className="px-2">
+            Name
+          </label>
+          <input
+            id="name"
+            name="name"
+            className="px-2 rounded-md"
+            disabled
+            value={user.given_name + " " + user.family_name}
+          />
+
+          <label htmlFor="email" className="px-2">
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            className="px-2 rounded-md"
+            disabled={user.email ? true : false}
+            value={user.email || "Email missing"}
+          />
+        </div>
       </Main>
     </div>
   );

@@ -12,7 +12,7 @@ const ProfileLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="container flex flex-grow">
       <aside className="flex flex-col">
-        <h3 className="text-2xl font-medium flex gap-2 justify-center">
+        <h3 className="text-2xl font-medium flex gap-2 justify-center items-center">
           <ProfileImage user={user} />
           Settings
         </h3>
