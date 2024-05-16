@@ -10,7 +10,7 @@ const Navigation = async () => {
   const user = await getUser();
 
   return (
-    <nav className="flex flex-shrink">
+    <nav className="flex flex-shrink h-10">
       <div className="flex items-center gap-2">
         {user ? (
           <>

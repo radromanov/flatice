@@ -5,7 +5,6 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 
 import Header from "@/components/header/main-header";
-import Main from "@/components/content/main-content";
 import Footer from "@/components/main-footer";
 import { ThemeProvider } from "@/components/theme-provider";
 
@@ -25,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           `flex flex-col min-h-screen bg-background font-sans antialiased`,
@@ -39,7 +38,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <Main>{children}</Main>
+          {children}
           <Footer />
         </ThemeProvider>
       </body>

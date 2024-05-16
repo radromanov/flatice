@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 
 import {
@@ -11,23 +10,29 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
+import Link from "next/link";
+import ProfileImage from "../profile-image";
 
 const UserDropdown = ({ user }: { user: KindeUser }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Image
-          className="rounded-full border border-black"
-          width={42}
-          height={42}
-          src={user.picture || "Default user picture"}
-          alt="Your profile picture"
-        />
+        <ProfileImage user={user} />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>My account</DropdownMenuLabel>
+
         <DropdownMenuSeparator />
+
+        <Link href={`/profile/${user.id}`}>
+          <DropdownMenuItem className="cursor-pointer">
+            Settings
+          </DropdownMenuItem>
+        </Link>
+
+        <DropdownMenuSeparator />
+
         <DropdownMenuItem>
           <LogoutLink>Sign out</LogoutLink>
         </DropdownMenuItem>

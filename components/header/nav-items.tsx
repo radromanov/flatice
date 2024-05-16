@@ -1,15 +1,13 @@
 import Link from "next/link";
-import ExpensesIcon from "../icons/expenses-icon";
-import HomeIcon from "../icons/home-icon";
 
-const items: { text: string; to: string; icon: React.ReactNode }[] = [
-  { text: "Home", to: "/", icon: <HomeIcon /> },
-  { text: "Expenses", to: "/expenses", icon: <ExpensesIcon /> },
+const items: { text: string; to: string }[] = [
+  { text: "Home", to: "/" },
+  { text: "Expenses", to: "/expenses" },
 ];
 
 const NavigationItems = () => {
   return (
-    <ul className="flex gap-2">
+    <ul className="flex h-full gap-2 items-center justify-center">
       {items.map((item, i) => (
         <UnderlinedNavItem item={item} key={i} />
       ))}
@@ -21,13 +19,12 @@ const UnderlinedNavItem = ({ item }: { item: (typeof items)[number] }) => {
   return (
     <Link
       href={item.to}
-      className="flex flex-col text-xs font-medium group px-1 hover:bg-slate-200 rounded-lg"
+      className="items-center justify-center flex flex-col text-xs h-full font-medium group px-1 dark:hover:bg-slate-800 hover:bg-slate-100 rounded-lg"
     >
       <li className="flex flex-col items-center">
-        <span>{item.icon}</span>
         <span>{item.text}</span>
       </li>
-      <div className="border border-transparent group-hover:border-b-black w-0 group-hover:w-full transition-all duration-300" />
+      <div className="border border-transparent group-hover:border-b-black dark:group-hover:border-b-white w-0 group-hover:w-full transition-all duration-300" />
     </Link>
   );
 };
