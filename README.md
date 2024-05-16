@@ -3,8 +3,8 @@
 - [x] Deploy (Vercel)
 - [x] Database (Vercel Postgres)
   - [x] ORM (Drizzle)
-- [ ] Authentication (Kinde)
+- [x] Authentication (Kinde)
+- [x] Shad UI
 - [ ] Error management (Sentry)
 - [ ] Expenses CRUD operations
-- [ ] UI (Shad ui)
 - [ ] Analytics (Posthog)

@@ -3,7 +3,7 @@ import UserDropdown from "./user-dropdown";
 import Unauthorized from "./unauthorized";
 
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import ThemeSwitch from "./theme-switch";
+import { ThemeToggle } from "../theme-toggle";
 
 const Navigation = async () => {
   const { getUser } = getKindeServerSession();
@@ -21,7 +21,7 @@ const Navigation = async () => {
           <Unauthorized />
         )}
 
-        <ThemeSwitch />
+        <ThemeToggle />
       </div>
     </nav>
   );

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import Header from "@/components/header/main-header";
 import Main from "@/components/content/main-content";
 import Footer from "@/components/main-footer";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -27,13 +28,20 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "flex flex-col min-h-screen bg-background font-sans antialiased",
+          `flex flex-col min-h-screen bg-background font-sans antialiased`,
           fontSans.variable
         )}
       >
-        <Header />
-        <Main>{children}</Main>
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <Main>{children}</Main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
