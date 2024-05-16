@@ -1,3 +1,4 @@
+import ExpensesTable from "@/components/content/expenses-table";
 import Main from "@/components/content/main-content";
 import { getMyExpenses } from "@/lib/server/queries";
 
@@ -7,7 +8,11 @@ const ExpensesPage = async () => {
   return (
     <div className="container flex flex-grow">
       <Main>
-        {expenses.length ? "" : "You have no expenses. Congratulations!"}
+        {!expenses.length ? (
+          <ExpensesTable expenses={expenses} />
+        ) : (
+          "You have no expenses. Congratulations!"
+        )}
       </Main>
     </div>
   );
